@@ -30,8 +30,11 @@ hs.hotkey.bind(hyper, 'M', function ()
   hs.application.launchOrFocus('Matlab_R2017a')
 end)
 
-hs.hotkey.bind(hyper, '-', function()
-  print(hs.window:focusedWindow())
+hs.hotkey.bind(hyper, "W", function ()
+  hs.application.launchOrFocus('Wechat')
 end)
 
 
+hs.hotkey.bind(hyper, '-', function()
+  print(hs.window:focusedWindow())
+end)

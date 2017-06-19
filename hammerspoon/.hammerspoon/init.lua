@@ -1,13 +1,12 @@
 hyper = {"ctrl", "alt", "cmd"}
-meme = "Time's up! Ａｅｓｔｈｅｔｉｃ バス ｓｈｉｔ バスツアー Ａｅｓｔｈｅｔｉｃ ｓｈｉｔ スツ ｔｈａｔｓ モール ｓｏｍｅ Ａｅｓｔｈｅｔｉｃ バス ｔｈａｔｓ モール ｓｏｍｅ Ａｅｓｔｈｅｔｉｃ バス ｓｈｉｔ ｒｉｇｈｔ ｔｈｅｒｅ)"
+-- ~/coding/personal/markov/markov
 
 require('watcher')
 require('position')
-require('menubar')
+require('timer')
 require('focus')
 
--- Spaces module
-
+-- TODO: Configure spaces
 spaces = require("hs._asm.undocumented.spaces")
 
 -- To get names of applications
