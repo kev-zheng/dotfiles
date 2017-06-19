@@ -1,3 +1,6 @@
-##dotfiles
+## dotfiles
 
-Backup repository for dotfiles
+Hammerspoon: 
+Hyper Key
+Timer with menubar display
+
