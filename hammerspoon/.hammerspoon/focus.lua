@@ -26,14 +26,15 @@ hs.hotkey.bind(hyper, 'F', function ()
   hs.application.launchOrFocus('Finder')
 end)
 
+-- Activates Matlab only if running
 hs.hotkey.bind(hyper, 'M', function ()
-  hs.application.launchOrFocus('Matlab_R2017a')
+  local matlab = hs.application.get('Matlab_R2017a')
+  matlab:activate()
 end)
 
 hs.hotkey.bind(hyper, "W", function ()
   hs.application.launchOrFocus('Wechat')
 end)
-
 
 hs.hotkey.bind(hyper, '-', function()
   print(hs.window:focusedWindow())

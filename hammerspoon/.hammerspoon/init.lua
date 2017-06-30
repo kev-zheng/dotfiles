@@ -1,4 +1,4 @@
-hyper = {"ctrl", "alt", "cmd"}
+hyper = {"ctrl", "alt", "cmd", "shift"}
 -- ~/coding/personal/markov/markov
 
 require('watcher')
