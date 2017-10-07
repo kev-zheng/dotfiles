@@ -20,3 +20,6 @@ alias meme="markov ~/coding/personal/markov/memes.csv 100"
 
 screenfetch -E
 
+export PATH="/usr/local/opt/llvm/bin:$PATH"
+export EDITOR=/usr/bin/vim
+export GIT_EDITOR=vim

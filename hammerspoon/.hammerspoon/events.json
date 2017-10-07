@@ -1,0 +1,28 @@
+{
+    "events": [
+        {
+            "time": "7:00 AM",
+            "title": "EECS 281 Spec"
+        },
+        {
+            "time": "8:00 AM",
+            "title": "EECS 370 Mult. & Submit"
+        },
+        {
+            "time": "9:00 AM",
+            "title": "Work on Paraphrase"
+        },
+        {
+            "time": "10:00 AM",
+            "title": "CLRS Catch up"
+        },
+        {
+            "time": "7:30 PM",
+            "title": "Photostaff"
+        },
+        {
+            "time": "9:00 AM",
+            "title": "DIG"
+        }
+    ]
+}

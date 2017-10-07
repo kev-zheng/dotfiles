@@ -1,11 +1,15 @@
-hyper = {"ctrl", "alt", "cmd", "shift"}
+hyper = {"ctrl", "alt", "cmd"}
+
+cwd = os.getenv("HOME") .. "/dotfiles/hammerspoon/.hammerspoon/"
 -- ~/coding/personal/markov/markov
 
-require('watcher')
+--require('watcher') -- Use when developing
 require('position')
 require('timer')
 require('focus')
-
+require('gcal')
+inspect = require('inspect')
+-- 
 -- TODO: Configure spaces
 spaces = require("hs._asm.undocumented.spaces")
 
