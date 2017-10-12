@@ -1,28 +1,40 @@
 {
     "events": [
         {
-            "time": "7:00 AM",
-            "title": "EECS 281 Spec"
+            "time": "5:00 PM",
+            "title": "Last C4CS OH"
         },
         {
-            "time": "8:00 AM",
-            "title": "EECS 370 Mult. & Submit"
+            "time": "8:30 AM",
+            "title": "COGSCI 200 - 1800 CHEM"
         },
         {
-            "time": "9:00 AM",
-            "title": "Work on Paraphrase"
+            "time": "10:30 AM",
+            "title": "EECS 281 - Chrysler"
         },
         {
-            "time": "10:00 AM",
-            "title": "CLRS Catch up"
+            "time": "1:30 PM",
+            "title": "EECS 370 - 1013 DOW"
         },
         {
-            "time": "7:30 PM",
-            "title": "Photostaff"
+            "time": "8:00 PM",
+            "title": "Talking bout things"
         },
         {
-            "time": "9:00 AM",
-            "title": "DIG"
+            "time": "11:00 AM",
+            "title": "EECS 398 - 1013 DOW"
+        },
+        {
+            "time": "12:30 PM",
+            "title": "EECS 370 DISCUSSION - 1006 DOW"
+        },
+        {
+            "time": "1:00 PM",
+            "title": "Assign Daysides"
+        },
+        {
+            "time": "3:00 PM",
+            "title": "CROMA Lab Meeting - BBB 2901"
         }
     ]
 }
