@@ -65,11 +65,22 @@ def get_credentials():
         print('Storing credentials to ' + credential_path)
     return credentials
 
+def get_colors(service, colorfile):
+    try:
+        data = json.load(open(colorfile, 'r'))
+    except FileNotFoundError:
+        data = {}
+        colors = service.colors().get().execute()
+        for c in colors['calendar']:
+            data[c] = colors['calendar'][c]['background']
+
+        with open(colorfile, 'w') as jsonfile:
+            json.dump(data, jsonfile, indent=4)
+    return data
 
 def refresh_calendars(service, filename):
     """Fetches user's calendars and asks user to activate them
-
-    Calendars are only considered in other functions if active
+    Calendars are only considered if ACTIVATED
     """
     print('Refreshing calendars...')
 
@@ -92,14 +103,17 @@ def refresh_calendars(service, filename):
     with open(filename, 'w') as jsonfile:
         json.dump(data, jsonfile, indent=4)
 
-def refresh_events(service, delta, calendar_file, out_file):
+def refresh_events(service, delta, calendarFile, outFile):
     print('Refreshing events...\n')
+
+    # Get color information
+    colors = get_colors(service, 'colors.json')
 
     now = datetime.datetime.utcnow().isoformat() + 'Z' # 'Z' indicates UTC time
     maxTime = (datetime.datetime.utcnow() + datetime.timedelta(hours=delta)).isoformat() + 'Z'
 
     data = {'events':[]}
-    calendar = json.load(open(calendar_file, 'r'))
+    calendar = json.load(open(calendarFile, 'r'))
 
     for cal, cal_id in calendar['calendars']['active'].items():   
         print('{}'.format(cal))
@@ -110,21 +124,25 @@ def refresh_events(service, delta, calendar_file, out_file):
         if not events:
             print('No upcoming events found.')
         for event in events:
+            # Convert numerical colorId to hex code
+            try:
+                hexColor = colors[event['colorId']]
+                print(event['colorId'])
+            except KeyError:
+                hexColor = "#1d1d1d"
+
             if event['summary'] != 'Work':
                 start = parse(event['start'].get('dateTime', event['start'].get('date')))
                 start_string = start.strftime("%I:%M %p").lstrip('0')
-                data['events'].append({'time':start_string, 'title':event['summary']})
-
+                data['events'].append({'time':start_string,
+                                       'title':event['summary'],
+                                       'color':hexColor})
+            print(event)
             print(start_string)
-
             print(start.time(), start.date(), event['summary'])
 
-            #data['events'].append() = [str(start.time()), str(start.date())]
-
-            #data['events'][event['summary']] = start.now()
-            #print(start, event['summary'])
         print('')
-    with open('events.json', 'w') as jsonfile:
+    with open(outFile, 'w') as jsonfile:
         json.dump(data, jsonfile, indent=4)
 
 def main():

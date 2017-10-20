@@ -35,12 +35,16 @@ function refreshMenu()
 
     if menu then
         if num_events > 0 then
+            --dot = hs.styledtext.new("●", {font = hs.styledtext.defaultFonts['menu'], color = {hex = data['events'][1]['color']}})..hs.styledtext.new(" ", {font = hs.styledtext.defaultFonts['menuBar'], color = { hex = "#1d1d1d"}})            
             menu:setTitle(data['events'][1]['time'].." - "..data['events'][1]['title'])
             
             local dropdown = {}
-            dropdown[1] = {title = "Open Google Calendar ... ", fn=function() hs.urlevent.openURL("https://calendar.google.com") end}
+            dropdown[1] = {title = "★ Open Google Calendar ... ", fn=function() hs.urlevent.openURL("https://calendar.google.com") end}
+            dropdown[2] = {title = "+  Add event ... "}
+            
             for k,v in pairs(data['events']) do
-                dropdown[k+1] = {title = v['time'].." - "..v['title'], fn=clickMenu}
+                dot = hs.styledtext.new("●", {color = { hex = v['color']}})..hs.styledtext.new(" ", {color = { hex = "#1d1d1d"}})
+                dropdown[k+2] = {title = dot..v['time'].." - "..v['title'], fn=clickMenu}
             end
             menu:setMenu(dropdown)
         else
@@ -51,8 +55,9 @@ end
 
 -- First call initializes menu
 refreshMenu()
+
+-- Refreshes menu every 30 minutes
 timer = hs.timer.doEvery(1800, refreshMenu)
 
 -- Sets menubar to first element
-
 hs.hotkey.bind(hyper, "-", refreshMenu)

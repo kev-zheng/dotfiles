@@ -1,40 +1,34 @@
 {
     "events": [
         {
-            "time": "5:00 PM",
-            "title": "Last C4CS OH"
-        },
-        {
-            "time": "8:30 AM",
-            "title": "COGSCI 200 - 1800 CHEM"
-        },
-        {
-            "time": "10:30 AM",
-            "title": "EECS 281 - Chrysler"
-        },
-        {
-            "time": "1:30 PM",
-            "title": "EECS 370 - 1013 DOW"
-        },
-        {
-            "time": "8:00 PM",
-            "title": "Talking bout things"
-        },
-        {
             "time": "11:00 AM",
-            "title": "EECS 398 - 1013 DOW"
+            "title": "EECS 398 - 1013 DOW",
+            "color": "#ff7537"
         },
         {
             "time": "12:30 PM",
-            "title": "EECS 370 DISCUSSION - 1006 DOW"
+            "title": "EECS 370 DISCUSSION - 1006 DOW",
+            "color": "#ff7537"
         },
         {
             "time": "1:00 PM",
-            "title": "Assign Daysides"
+            "title": "Assign Daysides",
+            "color": "#ffad46"
         },
         {
             "time": "3:00 PM",
-            "title": "CROMA Lab Meeting - BBB 2901"
+            "title": "CROMA Lab Meeting - BBB 2901",
+            "color": "#7bd148"
+        },
+        {
+            "time": "4:00 PM",
+            "title": "Abbhi",
+            "color": "#1d1d1d"
+        },
+        {
+            "time": "8:00 PM",
+            "title": "Talkin bout things",
+            "color": "#16a765"
         }
     ]
 }
