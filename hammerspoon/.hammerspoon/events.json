@@ -1,34 +1,29 @@
 {
     "events": [
         {
-            "time": "11:00 AM",
-            "title": "EECS 398 - 1013 DOW",
-            "color": "#ff7537"
+            "time": "7:30 PM",
+            "title": "Photostaff",
+            "color": "#ffb878"
         },
         {
-            "time": "12:30 PM",
-            "title": "EECS 370 DISCUSSION - 1006 DOW",
-            "color": "#ff7537"
+            "time": "9:00 AM",
+            "title": "DIG",
+            "color": "#5484ed"
         },
         {
-            "time": "1:00 PM",
-            "title": "Assign Daysides",
-            "color": "#ffad46"
+            "time": "8:30 AM",
+            "title": "COGSCI 200 - 1800 CHEM",
+            "color": "#fbd75b"
         },
         {
-            "time": "3:00 PM",
-            "title": "CROMA Lab Meeting - BBB 2901",
-            "color": "#7bd148"
+            "time": "10:30 AM",
+            "title": "EECS 281 - Chrysler",
+            "color": "#fbd75b"
         },
         {
-            "time": "4:00 PM",
-            "title": "Abbhi",
-            "color": "#1d1d1d"
-        },
-        {
-            "time": "8:00 PM",
-            "title": "Talkin bout things",
-            "color": "#16a765"
+            "time": "1:30 PM",
+            "title": "EECS 370 - 1013 DOW",
+            "color": "#fbd75b"
         }
     ]
 }

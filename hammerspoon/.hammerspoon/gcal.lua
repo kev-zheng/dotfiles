@@ -40,7 +40,7 @@ function refreshMenu()
             
             local dropdown = {}
             dropdown[1] = {title = "★ Open Google Calendar ... ", fn=function() hs.urlevent.openURL("https://calendar.google.com") end}
-            dropdown[2] = {title = "+  Add event ... "}
+            dropdown[2] = {title = "＋ Add event ... "}
             
             for k,v in pairs(data['events']) do
                 dot = hs.styledtext.new("●", {color = { hex = v['color']}})..hs.styledtext.new(" ", {color = { hex = "#1d1d1d"}})

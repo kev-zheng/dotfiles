@@ -16,6 +16,7 @@ import json
 try:
     import argparse
     parser = argparse.ArgumentParser(parents=[tools.argparser])
+    parser.add_argument('-h', '--help')
     parser.add_argument('-c', '--calendar', action='store_true')
     parser.add_argument('-e', '--events', action='store_true')
     flags = parser.parse_args()
@@ -27,13 +28,6 @@ except ImportError:
 SCOPES = 'https://www.googleapis.com/auth/calendar.readonly'
 CLIENT_SECRET_FILE = 'client_secret.json'
 APPLICATION_NAME = 'Google Calendar API Python Quickstart'
-
-def usage():
-    print('''
-    gcal.py
-    Interacts with the Google Calendar API
-    -c --calendar fetches list of calendars and asks to set active/inactive
-    ''')
 
 def get_credentials():
     """Gets valid user credentials from storage.
@@ -66,17 +60,17 @@ def get_credentials():
     return credentials
 
 def get_colors(service, colorfile):
+    """Fetches color mappings using Gcal API if colorfile does not exist,
+    returns a dictionary of colors
+    """
     try:
-        data = json.load(open(colorfile, 'r'))
+        colors = json.load(open(colorfile, 'r'))
     except FileNotFoundError:
-        data = {}
         colors = service.colors().get().execute()
-        for c in colors['calendar']:
-            data[c] = colors['calendar'][c]['background']
-
         with open(colorfile, 'w') as jsonfile:
-            json.dump(data, jsonfile, indent=4)
-    return data
+            json.dump(colors, jsonfile, indent=4)
+
+    return colors
 
 def refresh_calendars(service, filename):
     """Fetches user's calendars and asks user to activate them
@@ -89,9 +83,9 @@ def refresh_calendars(service, filename):
     inactive = {}
 
     calendar_list = service.calendarList().list().execute()
-    # Loop through calendars
+    # Loop through calendars, set active or inactive
     for item in calendar_list['items']:
-        active_flag = input("  Activate {} ? [y/N] ".format(item['summary']))
+        active_flag = input(f"Activate (item['summary']) ? [y/N] ")
         if(str.lower(active_flag) == 'y'):
             active[item['summary']] = item['id']
         else:
@@ -100,48 +94,54 @@ def refresh_calendars(service, filename):
     data['calendars']['active'] = active
     data['calendars']['inactive'] = inactive
 
+    # Update calendar data
     with open(filename, 'w') as jsonfile:
         json.dump(data, jsonfile, indent=4)
 
 def refresh_events(service, delta, calendarFile, outFile):
+    """Fetches all events in the next (delta) hours from active calendars,
+    then updates the events file
+    """
     print('Refreshing events...\n')
 
-    # Get color information
+    # Color information
     colors = get_colors(service, 'colors.json')
 
+    # Calculating time deltas
     now = datetime.datetime.utcnow().isoformat() + 'Z' # 'Z' indicates UTC time
     maxTime = (datetime.datetime.utcnow() + datetime.timedelta(hours=delta)).isoformat() + 'Z'
 
     data = {'events':[]}
     calendar = json.load(open(calendarFile, 'r'))
 
+    # Iterate over active calendars
     for cal, cal_id in calendar['calendars']['active'].items():   
-        print('{}'.format(cal))
+        # Query for events
         eventsResult = service.events().list(
             calendarId=cal_id, timeMin=now, timeMax=maxTime, singleEvents=True,
             orderBy='startTime').execute()
         events = eventsResult.get('items', [])
         if not events:
             print('No upcoming events found.')
+        
         for event in events:
             # Convert numerical colorId to hex code
             try:
-                hexColor = colors[event['colorId']]
-                print(event['colorId'])
+                hexColor = colors['event'][event['colorId']]['background']
             except KeyError:
-                hexColor = "#1d1d1d"
+                # Default color - blue
+                hexColor = colors['event']['9']['background']
+                colorId = 9
 
+            # Filter out 'Work' tags (for my personal calendar)
             if event['summary'] != 'Work':
                 start = parse(event['start'].get('dateTime', event['start'].get('date')))
                 start_string = start.strftime("%I:%M %p").lstrip('0')
                 data['events'].append({'time':start_string,
                                        'title':event['summary'],
                                        'color':hexColor})
-            print(event)
-            print(start_string)
-            print(start.time(), start.date(), event['summary'])
 
-        print('')
+    # Update event file
     with open(outFile, 'w') as jsonfile:
         json.dump(data, jsonfile, indent=4)
 
@@ -156,6 +156,14 @@ def main():
     http = credentials.authorize(httplib2.Http())
     service = discovery.build('calendar', 'v3', http=http)
 
+    if(flags.help):
+        print('''gcal.py
+        Interacts with the Google Calendar API
+        -c --calendar fetches list of calendars and asks to set active/inactive
+        -e --events updates events.json using active calendars
+        ''')
+        return
+
     # Gets all calendars
     if(flags.calendar):
         refresh_calendars(service, 'gcal.json')
@@ -163,6 +171,8 @@ def main():
     # Gets all calendars
     if(flags.events):
         refresh_events(service, 48, 'gcal.json', 'events.json')
+
+
 
 if __name__ == '__main__':
     main()
