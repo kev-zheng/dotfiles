@@ -1,5 +1,6 @@
 set nocompatible              " be iMproved, required
 filetype off                  " required
+set shell=/bin/bash
 
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -14,13 +15,16 @@ Plugin 'octol/vim-cpp-enhanced-highlight'
 Plugin 'vim-scripts/indentpython.vim'
 Plugin 'jnurmine/Zenburn'
 Plugin 'altercation/vim-colors-solarized'
+Plugin 'terryma/vim-multiple-cursors'
+Plugin 'rakr/vim-one'
 Plugin 'scrooloose/nerdtree'
+Plugin 'sheerun/vim-polyglot'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
 
 " Plugin Specific
-map <C-n> :NERDTreeToggle<CR>
+nnoremap <C-m> :NERDTreeToggle<CR>
 
 """"""""""""
 
@@ -90,5 +94,24 @@ let g:solarized_visibility = "high"
 let g:solarized_contrast = "high"
 " put https://raw.github.com/altercation/vim-colors-solarized/master/colors/solarized.vim
 " in ~/.vim/colors/ and uncomment:
+"colorscheme Tomorrow-Night-Eighties
 colorscheme Tomorrow-Night-Eighties
-set key=
+
+source ~/.vim/bundle/cscope_maps.vim
+
+let g:cpp_class_scope_highlight = 1
+let g:cpp_member_variable_highlight = 1
+let g:cpp_class_decl_highlight = 1
+
+" Fixes indent on every line in the file
+" mz creates a mark called 'z'
+" gg jumps to beginning
+" = indents
+" G jumps to end
+" `z jumps back to 'z' mark
+map <F7> mzgg=G`z
+
+if has('nvim') || has('termguicolors')
+  set termguicolors
+endif
+

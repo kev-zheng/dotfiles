@@ -10,10 +10,6 @@ hs.hotkey.bind(hyper, 'F', function ()
   hs.application.launchOrFocus('Finder')
 end)
 
-hs.hotkey.bind(hyper, 'H', function()
-  hs.application.launchOrFocus('Hammerspoon')
-end)
-
 -- Activates Matlab only if running
 hs.hotkey.bind(hyper, 'M', function ()
   local matlab = hs.application.get('Matlab_R2017a')
@@ -44,3 +40,16 @@ hs.hotkey.bind(hyper, "space", function ()
   hs.application.launchOrFocus('iTerm')
 end)
 
+hs.hotkey.bind(hyper, "tab", function ()
+  hs.eventtap.keyStroke(nil, 'f3')  
+end)
+
+-- Requires explicitly setting mission control hotkey to f3
+hs.hotkey.bind(hyper, "tab", function ()
+  hs.eventtap.keyStroke(nil, 'f3')
+end)
+
+hs.hotkey.bind(hyper, 'H', function() hs.window.focusedWindow():focusWindowWest() end)
+hs.hotkey.bind(hyper, 'L', function() hs.window.focusedWindow():focusWindowEast() end)
+hs.hotkey.bind(hyper, 'K', function() hs.window.focusedWindow():focusWindowNorth() end)
+hs.hotkey.bind(hyper, 'J', function() hs.window.focusedWindow():focusWindowSouth() end)
