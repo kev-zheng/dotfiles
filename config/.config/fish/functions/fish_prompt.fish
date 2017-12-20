@@ -1,0 +1,1 @@
+/Users/kevzheng/.config/fisherman/vimple/functions/fish_prompt.fish

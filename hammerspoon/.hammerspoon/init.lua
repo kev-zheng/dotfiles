@@ -12,9 +12,9 @@ require('position')
 require('timer')
 require('focus')
 require('spaces')
-require('gcal/gcal')
+require('gcal')
 require('monitor/monitor')
-
+require('notify')
 -- 
 -- TODO: Configure spaces
 spaces = require("hs._asm.undocumented.spaces")

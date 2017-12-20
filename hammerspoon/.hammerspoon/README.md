@@ -1,9 +1,13 @@
-## dotfiles
+# gcal-status
+A hammerspoon script that displays your next Google Calendar events on the OSX
+status bar
 
-Hammerspoon
+## Installation
+Clone this repository into your .hammerspoon
+```
+git clone https://github.com/kev-zheng/gcal-status
+cd gcal-status
+```
 
-* position - dynamically controls screen position
-
-* timer - A menu bar timer activated through url event request
-
-* focus - quick focus/launch to specific application
+## Dependencies
+gcal-status.py uses __Python 3__, __Hammerspoon__
