@@ -24,6 +24,10 @@ hs.hotkey.bind(hyper, 'P', function ()
   hs.application.launchOrFocus('Preview')
 end)
 
+hs.hotkey.bind(hyper, 'R', function ()
+  hs.application.launchOrFocus('RStudio')
+end)
+
 hs.hotkey.bind(hyper, 'S', function ()
   hs.application.launchOrFocus('Slack')
 end)
@@ -40,16 +44,23 @@ hs.hotkey.bind(hyper, "space", function ()
   hs.application.launchOrFocus('iTerm')
 end)
 
+hs.hotkey.bind(hyper, 'H', function()
+  hs.application.launchOrFocus('Hammerspoon')
+end)
+
 hs.hotkey.bind(hyper, "tab", function ()
   hs.eventtap.keyStroke(nil, 'f3')  
 end)
+
+
+
 
 -- Requires explicitly setting mission control hotkey to f3
 hs.hotkey.bind(hyper, "tab", function ()
   hs.eventtap.keyStroke(nil, 'f3')
 end)
 
-hs.hotkey.bind(hyper, 'H', function() hs.window.focusedWindow():focusWindowWest() end)
-hs.hotkey.bind(hyper, 'L', function() hs.window.focusedWindow():focusWindowEast() end)
-hs.hotkey.bind(hyper, 'K', function() hs.window.focusedWindow():focusWindowNorth() end)
-hs.hotkey.bind(hyper, 'J', function() hs.window.focusedWindow():focusWindowSouth() end)
+-- hs.hotkey.bind(hyper, 'H', function() hs.window.focusedWindow():focusWindowWest() end)
+-- hs.hotkey.bind(hyper, 'L', function() hs.window.focusedWindow():focusWindowEast() end)
+-- hs.hotkey.bind(hyper, 'K', function() hs.window.focusedWindow():focusWindowNorth() end)
+-- hs.hotkey.bind(hyper, 'J', function() hs.window.focusedWindow():focusWindowSouth() end)

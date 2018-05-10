@@ -6,7 +6,8 @@ function notify(title, info, image, sound)
     end
 
 	if sound then
-		notif:soundName('alarm')
+		print('hall0')
+		print(notif:soundName('test'))
 	end 
 
 	notif:send()

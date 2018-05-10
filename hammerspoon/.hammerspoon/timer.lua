@@ -9,79 +9,74 @@ triggered with a url event.
 
 require("notify")
 
-notif_title = "Shuiner Alarm"
+notif_title = "Tomato Timer"
 shui_icon = hs.image.imageFromPath('~/.hammerspoon/assets/shui.png')
+time = 0
 
-menu = hs.menubar.new()
-pomodoro = false
-rest = false
+clock_idx = 1
 
- quote = "You can\'t stop the waves, but you can learn to surf."
- words = {}
-
-for w in quote:gmatch("%S+") do
-	table.insert(words, w)
-end
-
-local function toggleRest()
-	if rest == true then -- Currently taking a break, go back
-		time = 25 * 60
-		rest = false
-		notify(notif_title, "Get to work!", shui_icon, true)
-	else
-		time = 5 * 60
-		notify(notif_title, "Take a break!", shui_icon, nil)
-		rest = true
-	end
-end
+clocks = {"🕛","🕐","🕑","🕒","🕓","🕔","🕕","🕖","🕗","🕘","🕙","🕚"}
 
 local function updateTimer()
-	time = time - 1
 	local min = time // 60
 	local sec = time % 60
-	local disp = string.format (" %02d:%02d ", min, sec)
-	disp = message .. disp
+	local disp = string.format ("%s %02d:%02d ", clocks[clock_idx], min, sec)
+
+	time = time - 1
+	clock_idx = clock_idx % #clocks + 1
 
 	menu:setTitle(disp)
 	print(disp)
 	
 	if time == 0 then
-		if pomodoro == true then
-			toggleRest()
-		else
-			timer:stop()
-			notify(notif_title, "Time's up!", shui_icon, true)
-			menu:setTitle(nil)
-		end
+		cancel()
+		notify(notif_title, "Time's up!", shui_icon, true)
 	end
 end
 
--- URL EVENT: hammerspoon://timer?arg={}&message={}
--- arguments: pomodoro, pause, resume, or {interval (s)}
--- optional message to be displayed at top of status bar
-function menuTimer(eventName, params)
-	arg = params['arg']
-	message = params['message']
-	if arg == 'pomodoro' then
-		if timer then
-			timer:stop()
-		end
-		pomodoro = true 
-		time = 25 * 60
-		timer = hs.timer.new(1, updateTimer)
-		timer:start()
-	elseif arg == 'pause' and timer then
-		timer:stop()
-	elseif arg == 'resume' and timer then
-		timer:start()
-	else
-		if timer then
-			timer:stop()
-		end
-		pomodoro = false
-		time = arg
-		timer = hs.timer.new(1, updateTimer)
-		timer:start()
-	end
+function resume()
+	watch:start()
+	menu:setMenu({{title="Pause", fn=pause}, {title="Cancel", fn=cancel}})
 end
-hs.urlevent.bind('timer', menuTimer)
+
+function pause()
+	watch:stop()
+	menu:setMenu({{title="Resume", fn=resume}, {title="Cancel", fn=cancel}})
+end
+
+function cancel()
+	watch:stop()
+	time = nil
+	startTimer()
+end
+
+function begin()
+	notify(notif_title, "Starting timer!", shui_icon)
+
+	time = 25 * 60
+
+	menu:setMenu({{title="Pause", fn=pause}, {title="Cancel", fn=cancel}})
+
+	if watch == nil then
+		watch = hs.timer.new(1, updateTimer)
+	end
+
+	watch:start()
+end
+
+function startTimer()
+	if menu == nil then
+		menu = hs.menubar.new()
+	end
+
+	clocks = {"🕛","🕐","🕑","🕒","🕓","🕔","🕕","🕖","🕗","🕘","🕙","🕚"}
+
+	if hs.timer.localTime() > (0) then
+		clocks = {"🌒","🌓","🌔","🌝","🌖","🌗","🌘","🌚"}
+	end
+
+	menu:setTitle("🕛")
+	menu:setMenu({{title="Start", fn=begin}})
+end
+
+startTimer()

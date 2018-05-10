@@ -1,25 +1,24 @@
+-- Globals
 hyper = {"ctrl", "alt", "cmd"}
 hypershift = {"ctrl", "alt", "cmd", "shift"}
 hypertab = {"ctrl", "alt", "cmd", "tab"}
 
-
+-- Used GNU Stow to manage my dotfiles into one directory
 cwd = os.getenv("HOME") .. "/dotfiles/hammerspoon/.hammerspoon/"
--- ~/coding/personal/markov/markov
 
---require('watcher') -- Use when developing
 inspect = require('inspect') -- Use for looking up tables
 require('position')
-require('timer')
 require('focus')
-require('spaces')
 require('gcal')
 require('monitor/monitor')
 require('notify')
--- 
--- TODO: Configure spaces
-spaces = require("hs._asm.undocumented.spaces")
+require('spaces')
+require('timer')
 
--- To get names of applications
+-- Developer tools
+
+--require('watcher') -- Use when developing
+--To get names of applications
 function getApps()
 	hs.fnutils.each(hs.application.runningApplications(), function(app) print(app:title()) end)
 end
