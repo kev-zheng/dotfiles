@@ -1,0 +1,148 @@
+{
+    "kind": "calendar#events",
+    "etag": "\"p33s8pktnsb8dk0g\"",
+    "summary": "kevzheng@umich.edu",
+    "updated": "2018-04-23T16:01:35.291Z",
+    "timeZone": "America/New_York",
+    "accessRole": "owner",
+    "defaultReminders": [
+        {
+            "method": "popup",
+            "minutes": 60
+        },
+        {
+            "method": "popup",
+            "minutes": 15
+        }
+    ],
+    "items": [
+        {
+            "kind": "calendar#event",
+            "etag": "\"3048993387788000\"",
+            "id": "2fsrl115eq2dk9tkajmga9tnfq",
+            "status": "confirmed",
+            "htmlLink": "https://www.google.com/calendar/event?eid=MmZzcmwxMTVlcTJkazl0a2FqbWdhOXRuZnEga2V2emhlbmdAdW1pY2guZWR1",
+            "created": "2018-04-23T15:18:13.000Z",
+            "updated": "2018-04-23T15:18:13.894Z",
+            "summary": "pm app",
+            "creator": {
+                "email": "kevzheng@umich.edu",
+                "displayName": "Kevin Zheng",
+                "self": true
+            },
+            "organizer": {
+                "email": "kevzheng@umich.edu",
+                "displayName": "Kevin Zheng",
+                "self": true
+            },
+            "start": {
+                "dateTime": "2018-04-23T12:30:00-04:00"
+            },
+            "end": {
+                "dateTime": "2018-04-23T14:00:00-04:00"
+            },
+            "iCalUID": "2fsrl115eq2dk9tkajmga9tnfq@google.com",
+            "sequence": 0,
+            "reminders": {
+                "useDefault": true
+            },
+            "colorId": "3"
+        },
+        {
+            "kind": "calendar#event",
+            "etag": "\"3045401553328000\"",
+            "id": "4sljei3ttodg63pg052g6rf5kg",
+            "status": "confirmed",
+            "htmlLink": "https://www.google.com/calendar/event?eid=NHNsamVpM3R0b2RnNjNwZzA1Mmc2cmY1a2cga2V2emhlbmdAdW1pY2guZWR1",
+            "created": "2018-04-02T20:26:16.000Z",
+            "updated": "2018-04-02T20:26:16.664Z",
+            "summary": "EECS 482 FINAL",
+            "creator": {
+                "email": "kevzheng@umich.edu",
+                "displayName": "Kevin Zheng",
+                "self": true
+            },
+            "organizer": {
+                "email": "kevzheng@umich.edu",
+                "displayName": "Kevin Zheng",
+                "self": true
+            },
+            "start": {
+                "dateTime": "2018-04-23T19:00:00-04:00"
+            },
+            "end": {
+                "dateTime": "2018-04-23T21:00:00-04:00"
+            },
+            "iCalUID": "4sljei3ttodg63pg052g6rf5kg@google.com",
+            "sequence": 0,
+            "reminders": {
+                "useDefault": true
+            },
+            "colorId": "3"
+        },
+        {
+            "kind": "calendar#event",
+            "etag": "\"3045401450652000\"",
+            "id": "0t7qp0usm93f9apt74s1k2egdp",
+            "status": "confirmed",
+            "htmlLink": "https://www.google.com/calendar/event?eid=MHQ3cXAwdXNtOTNmOWFwdDc0czFrMmVnZHAga2V2emhlbmdAdW1pY2guZWR1",
+            "created": "2018-04-02T20:25:25.000Z",
+            "updated": "2018-04-02T20:25:25.326Z",
+            "summary": "STATS 415 FINAL",
+            "creator": {
+                "email": "kevzheng@umich.edu",
+                "displayName": "Kevin Zheng",
+                "self": true
+            },
+            "organizer": {
+                "email": "kevzheng@umich.edu",
+                "displayName": "Kevin Zheng",
+                "self": true
+            },
+            "start": {
+                "dateTime": "2018-04-24T10:30:00-04:00"
+            },
+            "end": {
+                "dateTime": "2018-04-24T12:30:00-04:00"
+            },
+            "iCalUID": "0t7qp0usm93f9apt74s1k2egdp@google.com",
+            "sequence": 0,
+            "reminders": {
+                "useDefault": true
+            },
+            "colorId": "3"
+        },
+        {
+            "kind": "calendar#event",
+            "etag": "\"3045401376104000\"",
+            "id": "5c6cirm9eg3uae750ma47lrd4s",
+            "status": "confirmed",
+            "htmlLink": "https://www.google.com/calendar/event?eid=NWM2Y2lybTllZzN1YWU3NTBtYTQ3bHJkNHMga2V2emhlbmdAdW1pY2guZWR1",
+            "created": "2018-04-02T20:24:48.000Z",
+            "updated": "2018-04-02T20:24:48.052Z",
+            "summary": "MATH 351 FINAL",
+            "creator": {
+                "email": "kevzheng@umich.edu",
+                "displayName": "Kevin Zheng",
+                "self": true
+            },
+            "organizer": {
+                "email": "kevzheng@umich.edu",
+                "displayName": "Kevin Zheng",
+                "self": true
+            },
+            "start": {
+                "dateTime": "2018-04-24T16:00:00-04:00"
+            },
+            "end": {
+                "dateTime": "2018-04-24T18:00:00-04:00"
+            },
+            "iCalUID": "5c6cirm9eg3uae750ma47lrd4s@google.com",
+            "sequence": 0,
+            "reminders": {
+                "useDefault": true
+            },
+            "colorId": "3"
+        }
+    ]
+}
