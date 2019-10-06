@@ -17,6 +17,7 @@ set noantialias
 set showcmd
 " Show line numbers
 set number
+set relativenumber
 
 """ Whitespace
 set list                  " Show end-of-line whitespace
@@ -37,8 +38,9 @@ set autoindent
 " Syntax highlighting
 syntax on
 set hlsearch " Highlight search
-" Stop highlighting on 'i'
-noremap i :noh<cr>i
+" Stop highlighting on insert 
+autocmd InsertEnter * :let @/=""
+autocmd InsertLeave * :let @/=""
 
 highlight Comment ctermfg=Grey
 highlight clear CursorLine
@@ -67,6 +69,13 @@ nnoremap k gk
 """ Searching
 " * puts current word in search but doesn't move
 nnoremap * *<c-o>
+
+" Incremental search
+set incsearch
+
+""" Autocompletion
+set completeopt=longest,menuone,noselect
+set belloff+=ctrlg
 
 """
 " Custom commands
@@ -102,4 +111,9 @@ let g:syntastic_python_checkers=['pylint']
 "source ~/.fzf/plugin/fzf.vim
 " Brew installed
 set rtp+=/usr/local/opt/fzf
+
+" Commentary
+autocmd FileType lua setlocal commentstring=--\ %s
+
+autocmd BufNewFile,BufRead *.clog set syntax=cpp
 
