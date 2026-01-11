@@ -1,21 +1,25 @@
 -- Globals
-hyper = {"ctrl", "alt", "cmd"}
-hypershift = {"ctrl", "alt", "cmd", "shift"}
-hypertab = {"ctrl", "alt", "cmd", "tab"}
+-- Set these values in karabiner
+hyper = {"ctrl", "cmd"}
+hypershift = {"ctrl", "cmd", "shift"}
+hypertab = {"ctrl", "cmd", "tab"}
 
--- Used GNU Stow to manage my dotfiles into one directory
-cwd = os.getenv("HOME") .. "/dotfiles/hammerspoon/.hammerspoon/"
+-- Home directory where lua code is stored
+cwd = os.getenv("HOME") .. "/.hammerspoon/"
 
-inspect = require('inspect') -- Use for looking up tables
+-- Path of your python3 executable
+PYTHON_BINARY = "/usr/bin/python3"
+
+-- Toggle modules here
+inspect = require('inspect')
 require('position')
 require('focus')
-require('gcal')
-require('monitor/monitor')
-require('notify')
-require('spaces')
-require('timer')
-
--- Developer tools
+-- require('gcal')
+require('monitor')
+-- require('notify')
+-- require('timer')
+-- require('spaces')
+-- require('airpods')
 
 --require('watcher') -- Use when developing
 --To get names of applications

@@ -1,5 +1,13 @@
+--[[
+
+focus.lua
+
+Set application bindings here!
+
+]]--
+
 hs.hotkey.bind(hyper, "C", function ()
-  hs.application.launchOrFocus('Google Chrome')
+  hs.application.launchOrFocus('Google Chrome Beta')
 end)
 
 hs.hotkey.bind(hyper, 'E', function ()
@@ -10,10 +18,8 @@ hs.hotkey.bind(hyper, 'F', function ()
   hs.application.launchOrFocus('Finder')
 end)
 
--- Activates Matlab only if running
-hs.hotkey.bind(hyper, 'M', function ()
-  local matlab = hs.application.get('Matlab_R2017a')
-  matlab:activate()
+hs.hotkey.bind(hyper, "I", function ()
+  hs.application.launchOrFocus('Xcode')
 end)
 
 hs.hotkey.bind(hyper, 'N', function()
@@ -29,7 +35,7 @@ hs.hotkey.bind(hyper, 'R', function ()
 end)
 
 hs.hotkey.bind(hyper, 'S', function ()
-  hs.application.launchOrFocus('Slack')
+  hs.application.launchOrFocus('Spotify')
 end)
 
 hs.hotkey.bind(hyper, 'T', function ()
@@ -40,27 +46,51 @@ hs.hotkey.bind(hyper, "W", function ()
   hs.application.launchOrFocus('Wechat')
 end)
 
-hs.hotkey.bind(hyper, "space", function ()
-  hs.application.launchOrFocus('iTerm')
-end)
-
 hs.hotkey.bind(hyper, 'H', function()
   hs.application.launchOrFocus('Hammerspoon')
 end)
 
-hs.hotkey.bind(hyper, "tab", function ()
-  hs.eventtap.keyStroke(nil, 'f3')  
+hs.hotkey.bind(hyper,  "space", function()
+  hs.application.launchOrFocus('iTerm')
 end)
 
 
-
-
--- Requires explicitly setting mission control hotkey to f3
-hs.hotkey.bind(hyper, "tab", function ()
-  hs.eventtap.keyStroke(nil, 'f3')
-end)
-
--- hs.hotkey.bind(hyper, 'H', function() hs.window.focusedWindow():focusWindowWest() end)
--- hs.hotkey.bind(hyper, 'L', function() hs.window.focusedWindow():focusWindowEast() end)
--- hs.hotkey.bind(hyper, 'K', function() hs.window.focusedWindow():focusWindowNorth() end)
--- hs.hotkey.bind(hyper, 'J', function() hs.window.focusedWindow():focusWindowSouth() end)
+-- Workaround for Alacritty app
+-- 
+-- Searches current space for the app, then saves the window
+-- if a window wasn't found, use the saved window, or default
+-- to launchOrFocus()
+--
+--local spaces = require "hs._asm.undocumented.spaces"
+--local unit_window = hs.geometry.size(0.0, 0.0)
+--cached_win = nil
+--
+--hs.hotkey.bind(hyper, "space", function ()
+-- 
+--  -- Focus cached window
+--  if cached_win ~= nil and cached_win:size() ~= unit_window then
+--    print("focusing cached window")
+--    cached_win:focus()
+--    return
+--  end
+--
+--  windows = spaces.allWindowsForSpace(spaces.activeSpace())
+--
+--  alacritty_win = nil
+--  for k,v in pairs(windows) do
+--    if v:application():name() == 'Alacritty' then
+--      alacritty_win = v
+--    end
+--  end
+--
+--  -- Focus the searched window
+--  if alacritty_win ~= nil then
+--    print("focusing searched window")
+--    cached_win = alacritty_win:focus()
+--    return
+--  end
+--
+--  -- Attempts failed, launch the app
+--  print("launchOrFocus app")
+--  hs.application.launchOrFocus('/Applications/Alacritty.app')
+--end)

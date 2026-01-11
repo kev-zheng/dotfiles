@@ -1,3 +1,5 @@
+sound_file_path = '/Users/kevzheng/Library/Sounds/alarm.m4a'
+
 function notify(title, info, image, sound)
 	local notif = hs.notify.new({title=title, informativeText=info})
     
@@ -6,8 +8,8 @@ function notify(title, info, image, sound)
     end
 
 	if sound then
-		print('hall0')
-		print(notif:soundName('test'))
+		alarm_sound = hs.sound.getByFile(sound_file_path)
+		alarm_sound:play()
 	end 
 
 	notif:send()
